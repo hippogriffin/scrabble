@@ -1,0 +1,92 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 30px;
+}
+h1 {
+  text-align: center;
+}
+#connection-area {
+  text-align: center;
+  margin-bottom: 20px;
+}
+#game {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  align-items: flex-start;
+}
+#board-area, #players-area {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 18px #0001;
+}
+#board {
+  display: grid;
+  grid-template-columns: repeat(15, 32px);
+  grid-template-rows: repeat(15, 32px);
+  gap: 2px;
+  margin-top: 8px;
+}
+.square {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  text-align: center;
+  line-height: 32px;
+  font-size: 16px;
+  font-weight: bold;
+  user-select: none;
+  background: #ebd7af;
+  color: #222;
+  position: relative;
+}
+.square.tw { background: #c5003a; color: #fff; }
+.square.dw { background: #f99fc9; color: #a6003c; }
+.square.tl { background: #0b45a1; color: #fff; }
+.square.dl { background: #51adf6; color: #222; }
+.square.center { background: #fde64d; color: #222; font-size: 20px; }
+
+.square[data-empty="true"]:after {
+  content: attr(data-bonus);
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  font-size: 10px;
+}
+.player-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 18px;
+  background: #f7f8fa;
+}
+.rack {
+  display: flex;
+  gap: 7px;
+  margin-top: 7px;
+}
+.tile {
+  width: 28px;
+  height: 28px;
+  background: #fffabb;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 28px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0 1px 2px #3331;
+}
+.tile.hidden {
+  background: #d0d0d0;
+  color: #bbb;
+}

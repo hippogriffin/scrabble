@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiplayer Scrabble</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Scrabble Multiplayer</h1>
+  <div id="connection-area">
+    <label>Nickname: <input type="text" id="nickname"></label>
+    <label>Room: <input type="text" id="room"></label>
+    <button id="joinBtn">Join Game</button>
+    <div id="conn-status"></div>
+  </div>
+  <div id="game" style="display:none">
+    <div id="board-area">
+      <h2>Board</h2>
+      <div id="board"></div>
+    </div>
+    <div id="players-area">
+      <h2>Players</h2>
+      <div id="players"></div>
+    </div>
+    <div id="actions"></div>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="mp-scrabble.js"></script>
+</body>
+</html>
