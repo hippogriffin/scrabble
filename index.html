@@ -8,14 +8,34 @@
 <body>
   <h1>Scrabble Multiplayer</h1>
   <div id="connection-area">
-    <label>Nickname: <input type="text" id="nickname"></label>
-    <label>Room: <input type="text" id="room"></label>
-    <button id="joinBtn">Join Game</button>
-    <div id="conn-status"></div>
+    <div class="join-card" role="region" aria-label="Join game">
+      <h2>Join or Create a Game</h2>
+      <input type="text" id="nickname" class="join-input" placeholder="Nickname (optional)">
+      <input type="text" id="room" class="join-input" placeholder="Room name (default)">
+      <div class="join-row">
+        <label class="join-field">
+          <div class="join-field-label">Board size</div>
+          <input type="number" id="boardSize" class="join-input small" min="5" max="25" value="15">
+        </label>
+        <label class="join-field">
+          <div class="join-field-label">Rounds</div>
+          <input type="number" id="rounds" class="join-input small" min="1" max="1000" value="30">
+        </label>
+      </div>
+      <button id="joinBtn" class="join-btn">Join Game</button>
+      <input type="text" id="joinCode" class="join-input" placeholder="Join code (if joining existing room)">
+      <div id="conn-status" class="conn-status"></div>
+      <div id="join-code-area" class="join-code-area hidden">
+        <div class="join-code-label">Room code</div>
+        <div class="join-code-row">
+          <input id="joinCodeDisplay" readonly class="join-input code-display" value="">
+          <button id="copyJoinCodeBtn" class="copy-btn">Copy</button>
+        </div>
+      </div>
+    </div>
   </div>
   <div id="game" style="display:none">
     <div id="board-area">
-      <h2>Board</h2>
       <div id="board"></div>
     </div>
     <div id="actions-panel"></div>
@@ -25,6 +45,13 @@
   <script src="mp-scrabble.js"></script>
   <div id="my-rack"></div>
   <div id="player-tracker"></div>
+  <!-- End-of-game banner overlay -->
+  <div id="end-banner" class="hidden" role="dialog" aria-live="polite">
+    <div id="end-banner-content">
+      <div id="end-winner"></div>
+      <button id="end-close">Close</button>
+    </div>
+  </div>
   <div id="actions-panel"></div>
 </body>
 </html>
