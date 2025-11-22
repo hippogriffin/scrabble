@@ -43,10 +43,10 @@ jobs:
           echo "::set-output name=BUILD_ID::${sha}-${ts}"
 
       - name: Build and push Docker images
-        id: push_ansible
+        id: push_squword
         uses: docker/build-push-action@v5
         with:
-          context: docker/ansible
+          context: docker/squword
           platforms: linux/amd64, linux/arm64
           push: true
           tags: ghcr.io/hippogriffin/ubuntu-2204-squword:${{ steps.prep.outputs.BUILD_ID }}
