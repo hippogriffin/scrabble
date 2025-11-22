@@ -4,7 +4,7 @@ Dockerfile
 .dockerignore
 .git
 .gitignore
-scrabble-db.json
+squword-db.json
 coverage
 dist
 *.log

@@ -17,14 +17,14 @@ EXPOSE 3000
 RUN mkdir -p /data
 
 # Use non-root user for better security, ensure /data is writable by that user
-RUN addgroup -S scrabble && adduser -S scrabble -G scrabble && chown -R scrabble:scrabble /data /usr/src/app
+RUN addgroup -S squword && adduser -S squword -G squword && chown -R squword:squword /data /usr/src/app
 
 # Expose /data as a volume so callers can mount persistent storage
 VOLUME ["/data"]
 
 # Let the app know where to write its DB file by default
-ENV SCRABBLE_DB=/data/scrabble-db.json
+ENV squword_DB=/data/squword-db.json
 
-USER scrabble
+USER squword
 
 CMD [ "npm", "start" ]

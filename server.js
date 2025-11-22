@@ -5,8 +5,8 @@ const { Low } = require('lowdb');
 const { JSONFile } = require('lowdb/node');
 // Allow DB file path to be overridden via environment variable so container
 // users can mount a volume (e.g. /data) for persistence. Default remains
-// 'scrabble-db.json' in the working directory for backward compatibility.
-const DB_PATH = process.env.SCRABBLE_DB || 'scrabble-db.json';
+// 'squword-db.json' in the working directory for backward compatibility.
+const DB_PATH = process.env.squword_DB || 'squword-db.json';
 const db = new Low(new JSONFile(DB_PATH), { games: {} });
 
 const app = express();
@@ -93,14 +93,14 @@ io.on("connection", (socket) => {
 
   let game = loadGameRoom(room);
     if (!game) {
-      const SCRABBLE_TILE_COUNTS = {
+      const squword_TILE_COUNTS = {
             A: 9, B: 2, C: 2, D: 4, E: 12, F: 2, G: 3, H: 2, I: 9, J: 1,
             K: 1, L: 4, M: 2, N: 6, O: 8, P: 2, Q: 1, R: 6, S: 4, T: 6,
             U: 4, V: 2, W: 2, X: 1, Y: 2, Z: 1
         };
     function buildTileBag() {
     const bag = [];
-    for (const [letter, count] of Object.entries(SCRABBLE_TILE_COUNTS)) {
+    for (const [letter, count] of Object.entries(squword_TILE_COUNTS)) {
         for (let i = 0; i < count; i++) {
         bag.push(letter);
         }
@@ -478,7 +478,7 @@ function getFullWord(board, placements) {
 function endGame(room) {
   const game = games[room] || loadGameRoom(room);
   if (!game) return;
-  // Compute final scores: simple highest-score winner. In real scrabble you'd subtract remaining tiles, but keep it simple here.
+  // Compute final scores: simple highest-score winner. In real squword you'd subtract remaining tiles, but keep it simple here.
   let maxScore = -Infinity;
   let winners = [];
   for (let i = 0; i < (game.players || []).length; i++) {
@@ -686,5 +686,5 @@ app.use(express.static(__dirname));
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log("Scrabble server running on port " + PORT);
+  console.log("squword server running on port " + PORT);
 });
