@@ -1,4 +1,4 @@
-FROM node:24-alpine
+FROM node:24.14.0-trixie-slim
 
 # Create app directory
 WORKDIR /usr/src/app
