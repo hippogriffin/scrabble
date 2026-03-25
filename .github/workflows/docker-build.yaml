@@ -14,9 +14,6 @@ jobs:
   build-and-push-image:
     name: Push Docker image github
     runs-on: ubuntu-latest
-    container:
-      image: docker.io/docker:latest
-      options: --user root
     permissions:
       packages: write
       contents: read
