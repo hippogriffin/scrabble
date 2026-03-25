@@ -2,7 +2,7 @@ name: Build Squword Docker image on PR
 
 on:
   workflow_dispatch:
-  pr:
+  pull_request: 
 
 jobs:
   build-and-push-image:
