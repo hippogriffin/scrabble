@@ -2,13 +2,7 @@ name: Build Squword Docker image on PR
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron:  '0 3 * * 1'
-  push:
-    branches:
-      - master
-    paths:
-      - package.json
+  pr:
 
 jobs:
   build-and-push-image:
